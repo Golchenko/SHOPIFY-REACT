@@ -1,0 +1,6 @@
+npx create-react-app name
+cd name
+yarn add shopify-buy
+yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^4
+yarn add react-router-dom
+yarn add react-icons
