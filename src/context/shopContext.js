@@ -76,7 +76,18 @@ class ShopProvider extends Component {
         console.log(this.state.checkout);
 
         return (
-            <ShopContext.Provider>
+            <ShopContext.Provider
+                value={{
+                    ...this.state,
+                    fetchAllProducts: this.fetchAllProducts,
+                    fetchProductWithHandle: this.fetchProductWithHandle,
+                    addItemtoCheckout: this.addItemtoCheckout,
+                    removeLineItem: this.removeLineItem,
+                    closeCart: this.closeCart,
+                    closeMenu: this.closeMenu,
+                    openMenu: this.openMenu
+                }}
+            >
                 {this.props.children}
             </ShopContext.Provider>
         );
