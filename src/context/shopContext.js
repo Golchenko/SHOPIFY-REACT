@@ -54,6 +54,7 @@ class ShopProvider extends Component {
     };
 
     fetchAllProducts = async () => {
+        console.log("client:", client.domain);
         const products = await client.product.fetchAll();
         this.setState({ products: products });
     };
@@ -65,15 +66,19 @@ class ShopProvider extends Component {
         return product;
     };
 
-    closeCart = () => { };
+    closeCart = () => {
+        this.setState({ isCartOpen: false })
+    };
 
-    openCart = () => { };
+    openCart = () => {
+        this.setState({ isCartOpen: true })
+    };
 
-    closeMenu = () => { };
+    closeMenu = () => {
+
+    };
 
     render() {
-
-        console.log(this.state.checkout);
 
         return (
             <ShopContext.Provider
@@ -83,6 +88,7 @@ class ShopProvider extends Component {
                     fetchProductWithHandle: this.fetchProductWithHandle,
                     addItemtoCheckout: this.addItemtoCheckout,
                     removeLineItem: this.removeLineItem,
+                    openCart: this.openCart,
                     closeCart: this.closeCart,
                     closeMenu: this.closeMenu,
                     openMenu: this.openMenu
