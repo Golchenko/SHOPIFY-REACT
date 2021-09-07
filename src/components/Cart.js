@@ -9,8 +9,14 @@ import {
     DrawerContent,
     DrawerCloseButton,
     Button,
-    Input
-  } from '@chakra-ui/react'
+    Grid,
+    Flex,
+    Text,
+    Box,
+    Image,
+    Link
+} from '@chakra-ui/react'
+import { CloseIcon } from '@chakra-ui/icons'
 
 const Cart = () => {
 
@@ -29,14 +35,45 @@ const Cart = () => {
                     <DrawerHeader>Your shopping cart</DrawerHeader>
 
                     <DrawerBody>
-                        <Input placeholder="Type here..." />
+                        {
+                            checkout.lineItems && checkout.lineItems.map(item => (
+                                <Grid templateColumns="repeat(4, 1fr)" gap={1} key={item.id}>
+                                    <Flex alignItems="center" justifyContent="center">
+                                        <Box>
+                                            <CloseIcon cursor="pointer"
+                                                onClick={() => removeLineItem(item.id)} />
+                                        </Box>
+                                    </Flex>
+                                    <Flex alignItems="center" justifyContent="center">
+                                        <Image src={item.variant.image.src} />
+                                    </Flex>
+                                    <Flex alignItems="center" justifyContent="center">
+                                        <Text>
+                                            {item.title}
+                                        </Text>
+                                    </Flex>
+                                    <Flex alignItems="center" justifyContent="center">
+                                        <Text>
+                                            {item.variant.price}
+                                        </Text>
+                                    </Flex>
+
+                                </Grid>
+                            ))
+                        }
                     </DrawerBody>
 
                     <DrawerFooter>
                         <Button variant="outline" mr={3} onClick={closeCart}>
                             Cancel
                         </Button>
-                        <Button colorScheme="blue">Save</Button>
+                        <Button width="100%">
+                            <Link
+                                href={checkout.webUrl}                                
+                            >
+                                Checkout
+                            </Link>
+                        </Button>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
