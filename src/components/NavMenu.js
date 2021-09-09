@@ -5,17 +5,10 @@ import { ShopContext } from '../context/shopContext'
 import {
     Drawer,
     DrawerBody,
-    DrawerFooter,
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    Button,
-    Grid,
-    Flex,
-    Text,
-    Box,
-    Image,
     VStack
 } from '@chakra-ui/react'
 
